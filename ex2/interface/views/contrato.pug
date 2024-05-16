@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  h1.w3-center Detalhes do Contrato
+  div.w3-container
+    table.w3-table-all.w3-hoverable
+      tbody
+        tr
+          th ID Contrato
+          td= contrato._id
+        tr
+          th Número de Anúncio
+          td= contrato.nAnuncio
+        tr
+          th Tipo de Procedimento
+          td= contrato.tipoprocedimento
+        tr
+          th Objecto do Contrato
+          td= contrato.objectoContrato
+        tr
+          th Data de Publicação
+          td= contrato.dataPublicacao
+        tr
+          th Data de Celebração
+          td= contrato.dataCelebracaoContrato
+        tr
+          th Preço Contratual
+          td= contrato.precoContratual
+        tr
+          th Prazo de Execução
+          td= contrato.prazoExecucao
+        tr
+          th NIPC da Entidade Comunicante
+          td= contrato.NIPC_entidade_comunicante
+        tr
+          th Entidade Comunicante
+          td= contrato.entidade_comunicante
+        tr
+          th Fundamentação
+          td= contrato.fundamentacao
+    a.w3-button.w3-margin-top(href='/') Voltar à página principal

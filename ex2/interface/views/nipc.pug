@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  div.w3-container
+    h1= titulo
+    h2 NIPC da Entidade Comunicante: #{entidadeNome}
+    h2.w3-center Lista de Contratos
+    div.w3-responsive
+      table.w3-table-all.w3-hoverable
+        thead
+          tr.w3-light-grey
+            th ID Contrato
+            th Objecto do Contrato
+            th Data de Celebração
+            th Preço Contratual
+            th NIPC da Entidade Comunicante
+            th Entidade Comunicante
+        tbody
+          each contrato in contratos
+            tr
+              td
+                a(href=`/${contrato._id}`) #{contrato._id}
+              td #{contrato.objectoContrato}
+              td #{contrato.dataCelebracaoContrato}
+              td #{contrato.precoContratual}
+              td
+                a(href=`/entidades/${contrato.entidade_comunicante}`) #{contrato.entidade_comunicante}
+              td #{contrato.NIPC_entidade_comunicante}
+    p Total do Valor dos Contratos: #{totalValor}
+    a.w3-button.w3-margin-top(href='/') Voltar à página principal

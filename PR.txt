@@ -1,0 +1,37 @@
+Respostas a exercícios
+----------------------------------------------------------------
+1.
+----------------------------------------------------------------
+1.1 Setup
+
+Alterei a chave "Id" para "_id" de modo a ficar com a formatação bem reconhecida do mongodb
+Para isso, utilizei o script.py que me deu como output o ficheiro new_contratos2024.json
+
+De seguida, utilizei o seguinte comando para importar para a minha db em mongo:
+mongoimport -d contratos -c contratos --file new_contratos2024.json --jsonArray
+para importar para mongo
+
+Recebi mensagem de sucesso para todos os documentos, ainda assim, Testei a db utilizando:
+mongosh
+show dbs
+use contratos
+show collections
+db.contratos.count() e devolveu-me o número de registos importados da new_contratos2024.json
+Utilizei ainda db.contratos.find() para verificar que todos os dados estavam inseridos como desejado
+Tenho então a minha persistẽncia de dados em mongodb pronta
+
+----------------------------------------------------------------
+
+Para o backend mudei a porta para 16000 e respondi as queries no ficheiro queries.txt
+Uma nota no backend é que quando se refere que "GET /contratos?entidade=EEEE: devolve a lista dos contratos correspondentes à entidade
+EEEE;", eu usei no EEEE o campo "entidade_comunicante" ao inves do campo "NIPC_entidade_comunicante".
+O professor disse que não era suposto ser assim, mas como o resto do projeto ja esta a contar com esta rota
+decidi manter, uma vez que em pouco afeta o projeto
+
+Concluindo o backend, testei as rotas no postman, nomeadamente a de adicionar, remover e modificar (put)
+
+Para o frontend medei a porta para 16001 e defini as rotas pedidas
+
+O dataset está entao guardado como "contratos" e para execiutar o projeto basta fazer npm i e npm start
+
+Fiz um docker yaml e file porém como nao consegui verificar se está 100%, decidi manter as rotas no app.js como se fosse localhost

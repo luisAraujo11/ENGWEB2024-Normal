@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: ./ex1
+      dockerfile: Dockerfile
+    ports:
+      - "16000:16000"
+    depends_on:
+      - mongodb
+  frontend:
+    build:
+      context: ./ex2
+      dockerfile: Dockerfile
+    ports:
+      - "16001:16001"
+    depends_on:
+      - backend
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    depends_on:
+      - mongo-seed
+  mongo-seed:
+    image: mongo:latest
+    volumes:
+      - ./new_contratos2024.json:/new_contratos2024.json
+    command: mongoimport --host mongodb -d contratos -c contratos --type json --file new_contratos2024.json --jsonArray
